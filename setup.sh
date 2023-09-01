@@ -273,8 +273,8 @@ conn roadwarrior
   forceencaps=yes
 
   # https://docs.strongswan.org/docs/5.9/config/IKEv2CipherSuites.html#_commercial_national_security_algorithm_suite
-  ike=aes256gcm16-prfsha384-ecp384!
-  esp=aes256gcm16-ecp384!
+  ike=chacha20poly1305-sha512-curve25519-prfsha512,aes256-sha256-prfsha256-modp2048,aes256gcm16-sha384-prfsha384-ecp384,aes256-sha1-modp1024,aes128-sha1-modp1024,3des-sha1-modp1024!
+  esp=chacha20poly1305-sha512,aes256gcm16-ecp384,aes256-sha256,aes256-sha1,3des-sha1!
 
   dpdaction=clear
   dpddelay=900s
@@ -652,8 +652,8 @@ conn ikev2vpn
         rekeymargin=3m
         keyingtries=1
         keyexchange=ikev2
-        ike=chacha20poly1305-sha512-curve25519-prfsha512,aes256-sha256-prfsha256-modp2048,aes256gcm16-sha384-prfsha384-ecp384,aes256-sha1-modp1024,aes128-sha1-modp1024,3des-sha1-modp1024!
-        esp=chacha20poly1305-sha512,aes256gcm16-ecp384,aes256-sha256,aes256-sha1,3des-sha1!
+        ike=aes256gcm16-prfsha384-ecp384!
+        esp=aes256gcm16-ecp384!
         leftsourceip=%config
         leftauth=eap-mschapv2
         eap_identity=\${VPNUSERNAME}
